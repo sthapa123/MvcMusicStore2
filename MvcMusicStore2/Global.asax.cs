@@ -6,6 +6,8 @@ using System.Web.Http;
 using System.Web.Mvc;
 using System.Web.Optimization;
 using System.Web.Routing;
+using System.Data.Entity;
+using MvcMusicStore2.Models;
 
 namespace MvcMusicStore2
 {
@@ -16,6 +18,9 @@ namespace MvcMusicStore2
     {
         protected void Application_Start()
         {
+            //Database.SetInitializer(new DropCreateDatabaseAlways<MusicStoreDB>());
+            Database.SetInitializer(new MusicStoreDBInitializer());
+
             AreaRegistration.RegisterAllAreas();
 
             WebApiConfig.Register(GlobalConfiguration.Configuration);
